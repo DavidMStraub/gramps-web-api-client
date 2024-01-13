@@ -1,7 +1,7 @@
 # Gramps Web API Client
 
 
-A simple Python client based on `requests` for interacting with a Gramps Web API server.
+A simple Python client based on `requests` for interacting with a [Gramps Web API](https://github.com/gramps-project/gramps-webapi/) server.
 
 ## Quick start
 
