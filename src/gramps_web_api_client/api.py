@@ -56,7 +56,14 @@ class API:
             self._fetch_tokens()
         url = self._endpoint_url(endpoint)
         res = requests.get(url, headers=self._auth_header)
-        res.raise_for_status()
+        try:
+            res.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            try:
+                data = res.json()
+                raise Exception(data) from e
+            except ValueError:
+                raise e
         data = res.json()
         return data
 
