@@ -1,6 +1,7 @@
-"""API."""
+"""A simple Gramps Web API Client."""
 
 from typing import Optional, Tuple
+from urllib.parse import urlencode
 
 import requests
 
@@ -93,11 +94,15 @@ class API:
         endpoint = f"{object_endpoint}{handle}"
         return self._put(endpoint, data)
 
-    def _iter_objects(self, object_endpoint: str):
+    def _iter_objects(self, object_endpoint: str, **kwargs):
         """Iterate over objects."""
         page = 1
         while True:
             endpoint = f"{object_endpoint}?pagesize={PAGE_SIZE}&page={page}"
+            for key, value in kwargs.items():
+                if not isinstance(value, str):
+                    value = urlencode(value)
+                endpoint += f"&{key}={value}"
             data = self._get(endpoint)
             if not len(data):
                 break
@@ -123,17 +128,17 @@ class API:
         """Get a single place."""
         return self._get_object(ENDPOINT_PLACES, handle)
 
-    def iter_people(self):
+    def iter_people(self, **kwargs):
         """Iterate over people."""
-        return self._iter_objects(ENDPOINT_PEOPLE)
+        return self._iter_objects(ENDPOINT_PEOPLE, **kwargs)
 
-    def iter_events(self):
+    def iter_events(self, **kwargs):
         """Iterate over events."""
-        return self._iter_objects(ENDPOINT_EVENTS)
+        return self._iter_objects(ENDPOINT_EVENTS, **kwargs)
 
-    def iter_places(self):
+    def iter_places(self, **kwargs):
         """Iterate over places."""
-        return self._iter_objects(ENDPOINT_PLACES)
+        return self._iter_objects(ENDPOINT_PLACES, **kwargs)
 
     def update_person(self, handle: str, data):
         """Update a person."""
