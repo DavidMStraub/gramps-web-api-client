@@ -7,6 +7,12 @@ A simple Python client based on `requests` for interacting with a [Gramps Web AP
 
 This is an experimental project for advanced users. The goal is to allow powerful batch operations on Gramps objects via the API. But only use it if you know what you are doing &ndash; you can easily break your Gramps database with this tool!
 
+## Install
+
+```bash
+pip install gramps-web-api-client
+```
+
 ## Quick start
 
 First, instantiate the API instance:
