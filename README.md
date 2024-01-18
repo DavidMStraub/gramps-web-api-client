@@ -42,7 +42,7 @@ Methods currently implemented:
 | `api.update_place(handle, data)`  | Update a single place |
 | `api.create_person(data)`  | Create a new person  |
 | `api.create_event(data)`  | Create a new evebt  |
-| `api.create_place(data)`  | GCreateet a new place  |
+| `api.create_place(data)`  | Create a new place  |
 
 
 In all cases, `data` are dictionaries for JSON objects following the Gramps Web API conventions.
