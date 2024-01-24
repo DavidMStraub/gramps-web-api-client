@@ -34,12 +34,15 @@ Methods currently implemented:
 | `api.iter_people()`  | Generator iterating over people  |
 | `api.iter_events()`  | Generator iterating over events  |
 | `api.iter_places()`  | Generator iterating over places  |
+| `api.iter_media()`  | Generator iterating over media objects  |
 | `api.get_person(handle)`  | Get a single person by handle  |
 | `api.get_event(handle)`  | Get a single event by handle  |
 | `api.get_place(handle)`  | Get a single place by handle  |
+| `api.get_media(handle)`  | Get a single media object by handle  |
 | `api.update_person(handle, data)`  | Update a single person  |
 | `api.update_event(handle, data)`  | Update a single event  |
 | `api.update_place(handle, data)`  | Update a single place |
+| `api.update_media(handle, data)`  | Update a single media object |
 | `api.create_person(data)`  | Create a new person  |
 | `api.create_event(data)`  | Create a new evebt  |
 | `api.create_place(data)`  | Create a new place  |
