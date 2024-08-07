@@ -22,7 +22,7 @@ from gramps_web_api_client import API
 
 api = API(
     host="https://my-gramps-web-instance.com",
-    basic_auth("my_user", "my_password")
+    basic_auth=("my_user", "my_password")
 )
 ```
 
