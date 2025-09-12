@@ -11,6 +11,7 @@ ENDPOINT_PEOPLE = "/people/"
 ENDPOINT_EVENTS = "/events/"
 ENDPOINT_PLACES = "/places/"
 ENDPOINT_MEDIA = "/media/"
+ENDPOINT_METADATA = "/metadata/"
 PAGE_SIZE = 200
 
 
@@ -139,6 +140,10 @@ class API:
     def get_media(self, handle: str):
         """Get a single media object."""
         return self._get_object(ENDPOINT_MEDIA, handle)
+
+    def get_metadata(self, include_surnames: bool = False):
+        """Get a single metadata object."""
+        return self._get_object(f"{ENDPOINT_METADATA}?surnames={include_surnames}", handle)
 
     def iter_people(self, **kwargs):
         """Iterate over people."""
