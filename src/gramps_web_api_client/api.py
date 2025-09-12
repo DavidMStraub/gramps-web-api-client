@@ -9,6 +9,7 @@ API_PREFIX = "/api"
 ENDPOINT_TOKEN = "/token/"
 ENDPOINT_PEOPLE = "/people/"
 ENDPOINT_EVENTS = "/events/"
+ENDPOINT_FAMILIES = "/families/"
 ENDPOINT_PLACES = "/places/"
 ENDPOINT_MEDIA = "/media/"
 ENDPOINT_METADATA = "/metadata/"
@@ -141,6 +142,10 @@ class API:
         """Get a single media object."""
         return self._get_object(ENDPOINT_MEDIA, handle)
 
+    def get_family(self, handle: str):
+        """Get a single family object."""
+        return self._get_object(ENDPOINT_FAMILIES, handle)
+
     def get_metadata(self, include_surnames: bool = False):
         """Get a single metadata object."""
         return self._get_object(f"{ENDPOINT_METADATA}?surnames={include_surnames}", handle)
@@ -161,6 +166,10 @@ class API:
         """Iterate over media objects."""
         return self._iter_objects(ENDPOINT_MEDIA, **kwargs)
 
+    def iter_families(self, **kwargs):
+        """Iterate over families."""
+        return self._iter_objects(ENDPOINT_FAMILIES, **kwargs)
+
     def update_person(self, handle: str, data):
         """Update a person."""
         return self._update_object(ENDPOINT_PEOPLE, handle, data)
@@ -176,6 +185,10 @@ class API:
     def update_media(self, handle: str, data):
         """Update a media object."""
         return self._update_object(ENDPOINT_MEDIA, handle, data)
+
+    def update_family(self, handle: str, data):
+        """Update a family."""
+        return self._update_object(ENDPOINT_FAMILIES, handle, data)
 
     def create_person(self, data):
         """Create a person."""
