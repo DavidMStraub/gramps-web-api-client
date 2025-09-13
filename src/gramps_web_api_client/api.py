@@ -6,13 +6,16 @@ from urllib.parse import urlencode
 import requests
 
 API_PREFIX = "/api"
-ENDPOINT_TOKEN = "/token/"
-ENDPOINT_PEOPLE = "/people/"
+ENDPOINT_CITATIONS = "/citations/"
 ENDPOINT_EVENTS = "/events/"
 ENDPOINT_FAMILIES = "/families/"
-ENDPOINT_PLACES = "/places/"
 ENDPOINT_MEDIA = "/media/"
 ENDPOINT_METADATA = "/metadata/"
+ENDPOINT_PEOPLE = "/people/"
+ENDPOINT_PLACES = "/places/"
+ENDPOINT_REPOSITORIES = "/repositories/"
+ENDPOINT_SOURCES = "/sources/"
+ENDPOINT_TOKEN = "/token/"
 PAGE_SIZE = 200
 
 
@@ -126,6 +129,10 @@ class API:
         new_data = {**old_data, **data}
         return self._put_object(object_endpoint, handle, new_data)
 
+    def get_citation(self, handle: str):
+        """Get a single citation."""
+        return self._get_object(ENDPOINT_CITATIONS, handle)
+
     def get_person(self, handle: str):
         """Get a single person."""
         return self._get_object(ENDPOINT_PEOPLE, handle)
@@ -146,9 +153,21 @@ class API:
         """Get a single family object."""
         return self._get_object(ENDPOINT_FAMILIES, handle)
 
+    def get_repository(self, handle: str):
+        """Get a single repository."""
+        return self._get_object(ENDPOINT_REPOSITORIES, handle)
+
+    def get_source(self, handle: str):
+        """Get a single source."""
+        return self._get_object(ENDPOINT_SOURCES, handle)
+
     def get_metadata(self, include_surnames: bool = False):
         """Get a single metadata object."""
         return self._get_object(f"{ENDPOINT_METADATA}?surnames={include_surnames}", handle)
+
+    def iter_citations(self, **kwargs):
+        """Iterate over citations."""
+        return self._iter_objects(ENDPOINT_CITATIONS, **kwargs)
 
     def iter_people(self, **kwargs):
         """Iterate over people."""
@@ -170,9 +189,21 @@ class API:
         """Iterate over families."""
         return self._iter_objects(ENDPOINT_FAMILIES, **kwargs)
 
+    def iter_repositories(self, **kwargs):
+        """Iterate over repositories."""
+        return self._iter_objects(ENDPOINT_REPOSITORIES, **kwargs)
+
+    def iter_sources(self, **kwargs):
+        """Iterate over sources."""
+        return self._iter_objects(ENDPOINT_SOURCES, **kwargs)
+
     def update_person(self, handle: str, data):
         """Update a person."""
         return self._update_object(ENDPOINT_PEOPLE, handle, data)
+
+    def update_citation(self, handle: str, data):
+        """Update a citation."""
+        return self._update_object(ENDPOINT_CITATIONS, handle, data)
 
     def update_event(self, handle: str, data):
         """Update an event."""
@@ -190,6 +221,18 @@ class API:
         """Update a family."""
         return self._update_object(ENDPOINT_FAMILIES, handle, data)
 
+    def update_repository(self, handle: str, data):
+        """Update a repository."""
+        return self._update_object(ENDPOINT_REPOSITORIES, handle, data)
+
+    def update_source(self, handle: str, data):
+        """Update a source."""
+        return self._update_object(ENDPOINT_SOURCES, handle, data)
+
+    def create_citation(self, data):
+        """Create a citation."""
+        return self._post(ENDPOINT_CITATIONS, data)
+
     def create_person(self, data):
         """Create a person."""
         return self._post(ENDPOINT_PEOPLE, data)
@@ -198,6 +241,18 @@ class API:
         """Create ab event."""
         return self._post(ENDPOINT_EVENTS, data)
 
+    def create_family(self, data):
+        """Create a family."""
+        return self._post(ENDPOINT_FAMILIES, data)
+
     def create_place(self, data):
         """Create a place."""
         return self._post(ENDPOINT_PLACES, data)
+
+    def create_repository(self, data):
+        """Create a repository."""
+        return self._post(ENDPOINT_REPOSITORIES, data)
+
+    def create_source(self, data):
+        """Create a source."""
+        return self._post(ENDPOINT_SOURCES, data)
