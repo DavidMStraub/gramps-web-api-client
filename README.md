@@ -29,27 +29,40 @@ api = API(
 Methods currently implemented:
 
 
-| Method                               | description                             |
-|--------------------------------------|-----------------------------------------|
-| `api.iter_people()`                  | Generator iterating over people         |
-| `api.iter_events()`                  | Generator iterating over events         |
-| `api.iter_places()`                  | Generator iterating over places         |
-| `api.iter_media()`                   | Generator iterating over media objects  |
-| `api.iter_families()`                | Generator iterating over families       |
-| `api.get_person(handle)`             | Get a single person by handle           |
-| `api.get_event(handle)`              | Get a single event by handle            |
-| `api.get_place(handle)`              | Get a single place by handle            |
-| `api.get_media(handle)`              | Get a single media object by handle     |
-| `api.get_family(handle)`             | Get a single family by handle           |
-| `api.get_metadata(include_surnames)` | Get metadata about the current instance |
-| `api.update_person(handle, data)`    | Update a single person                  |
-| `api.update_event(handle, data)`     | Update a single event                   |
-| `api.update_place(handle, data)`     | Update a single place                   |
-| `api.update_family(handle, data)`    | Update a single family                  |
-| `api.update_media(handle, data)`     | Update a single media object            |
-| `api.create_person(data)`            | Create a new person                     |
-| `api.create_event(data)`             | Create a new event                      |
-| `api.create_place(data)`             | Create a new place                      |
+| Method                                | Description                             |
+|---------------------------------------|-----------------------------------------|
+| `api.iter_citations()`                | Generator iterating over citations      |
+| `api.iter_events()`                   | Generator iterating over events         |
+| `api.iter_families()`                 | Generator iterating over families       |
+| `api.iter_media()`                    | Generator iterating over media objects  |
+| `api.iter_people()`                   | Generator iterating over people         |
+| `api.iter_places()`                   | Generator iterating over places         |
+| `api.iter_repositories()`             | Generator iterating over repositories   |
+| `api.iter_sources()`                  | Generator iterating over sources        |
+| `api.get_citation(handle)`            | Get a single citation by handle         |
+| `api.get_event(handle)`               | Get a single event by handle            |
+| `api.get_family(handle)`              | Get a single family by handle           |
+| `api.get_media(handle)`               | Get a single media object by handle     |
+| `api.get_metadata(include_surnames)`  | Get metadata about the current instance |
+| `api.get_person(handle)`              | Get a single person by handle           |
+| `api.get_place(handle)`               | Get a single place by handle            |
+| `api.get_repository(handle)`          | Get a single repository by handle       |
+| `api.get_source(handle)`              | Get a single source by handle           |
+| `api.update_citation(handle, data)`   | Update a single citation                |
+| `api.update_event(handle, data)`      | Update a single event                   |
+| `api.update_family(handle, data)`     | Update a single family                  |
+| `api.update_media(handle, data)`      | Update a single media object            |
+| `api.update_person(handle, data)`     | Update a single person                  |
+| `api.update_place(handle, data)`      | Update a single place                   |
+| `api.update_repository(handle, data)` | Update a single repository              |
+| `api.update_source(handle, data)`     | Update a single source                  |
+| `api.create_citation(data)`           | Create a new citation                   |
+| `api.create_event(data)`              | Create a new event                      |
+| `api.create_family(data)`             | Create a new family                     |
+| `api.create_person(data)`             | Create a new person                     |
+| `api.create_place(data)`              | Create a new place                      |
+| `api.create_repository(data)`         | Create a new repository                 |
+| `api.create_source(data)`             | Create a new source                     |
 
 
 In all cases, `data` are dictionaries for JSON objects following the Gramps Web API conventions.
